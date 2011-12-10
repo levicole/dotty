@@ -1,16 +1,13 @@
 # ~/.bashrc
 # vim:set ft=sh sw=2 sts=2:
 stty -ixon
+source "$HOME/.hashrc"
 
 VISUAL=vim
 EDITOR="$VISUAL"
 LESS="FRX"
 RI="--format ansi -T"
-
-export INPUTRC=~/.inputrc
-
-export PATH="/usr/local/mysql/bin:$PATH"
-
+TERM="xterm-256color"
 
 export VISUAL EDITOR LESS RI
 
@@ -32,28 +29,13 @@ function parse_git_dirty {
   echo "$(parse_git_added)$(parse_git_modified)$(parse_git_deleted)"
 }
 function parse_git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/(\1$(parse_git_dirty))/"
-}
-export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$(parse_git_branch)$ "
-
-function chop(){
-	CURRENT_BRANCH=$(git branch | grep '\*')
-	git checkout ${1:-"master"} || exit 1
-	git branch -d ${CURRENT_BRANCH:2}
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/<\1$(parse_git_dirty)>/"
 }
 
-script_rails() {
-  if [ -f "`rails_root`/script/rails" ]; then
-    "`rails_root`/script/rails" "$@"
-  else
-    local name
-    name="$1"
-    shift
-    "`rails_root`/script/$name" "$@"
-  fi
-}
+export PS1="\[\033[01;32m\]\u\[\033[00m\]:\[\033[1;35m\]\W\[\033[0;34m\] \$(parse_git_branch)\[\033[00m\]$ "
 
-if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then . "$HOME/.rvm/scripts/rvm"; fi
-if [[ -s "$HOME/.aliases" ]]; then . "$HOME/.aliases"; fi
+[ ! -f "/etc/bash_completion" ] || . "/etc/bash_completion"
 
 [ ! -f "$HOME/.bashrc.local" ] || . "$HOME/.bashrc.local"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
