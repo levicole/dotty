@@ -1,7 +1,38 @@
 # ~/.bashrc
 # vim:set ft=sh sw=2 sts=2:
 stty -ixon
-source "$HOME/.hashrc"
+
+rails_root() {
+  (
+  dir=${1:-$(pwd)}
+  i=0
+  while [ "/" != "$dir" -a "$i" -ne 16 ]; do
+    if [ -f "$dir/config/environment.rb" ]; then
+      echo "$dir"
+      return 0
+    fi
+    dir="$(dirname "$dir")"
+    i=$(expr $i + 1)
+  done
+  return 1
+  )
+}
+
+script_rails() {
+  if [ -f "`rails_root`/script/rails" ]; then
+    "`rails_root`/script/rails" "$@"
+  else
+    local name
+    name="$1"
+    shift
+    "`rails_root`/script/$name" "$@"
+  fi
+}
+
+twiki () {
+  say -v Zarvox 'beedee-beedee-beedee'
+  rake db:migrate && rake db:migrate:redo && rake db:test:prepare
+}
 
 VISUAL=vim
 EDITOR="$VISUAL"
