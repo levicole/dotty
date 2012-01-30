@@ -3,6 +3,8 @@ if exists('g:loaded_pathogen')
   call pathogen#runtime_prepend_subdirectories(expand('~/.vimbundles'))
 endif
 
+source ~/.vimrc.local
+
 syntax on
 filetype plugin indent on
 
@@ -44,4 +46,4 @@ endfunction
 
 command! -nargs=* -range Translate call Rlocalize(<f-args>)
 command! TP normal o<space><esc>x"lp
-" noremap ,s :source ~/.vimrc.local
+noremap ,s :source ~/.vimrc.local
