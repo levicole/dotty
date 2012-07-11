@@ -63,11 +63,13 @@ function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/<\1$(parse_git_dirty)>/"
 }
 
-declare -r PROMPT_COMMAND="levi_prompt"
+# declare -r PROMPT_COMMAND="levi_prompt"
+
+LONG_PS1="\033[1;35m\]\W\e[0;33m\](\$(rvm-prompt))\033[0;34m\]\$(parse_git_branch)\[\033[00m\] $ "
+MEDIUM_PS1="\033[1;35m\]\W\033[0;34m\]\$(parse_git_branch)\[\033[00m\] $ "
+SHORT_PS1="$(parse_git_dirty) $ "
 
 levi_prompt () {
-  LONG_PS1="\033[1;35m\]\W\e[0;33m\](\$(rvm-prompt))\033[0;34m\]\$(parse_git_branch)\[\033[00m\] $ "
-  SHORT_PS1="$(parse_git_dirty) $ "
   current=`pwd`
   if [ -z $LPWD ]; then
     LPWD=`pwd`
@@ -82,6 +84,8 @@ levi_prompt () {
   fi
   export PS1=$PS1
 }
+
+export PS1=$MEDIUM_PS1
 
 PROJ_DIR="$HOME/projects"
 

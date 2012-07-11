@@ -29,6 +29,8 @@ autocmd User Rails Rnavcommand pmodel vendor/plugins/chc_hci/app/models -suffix=
 autocmd User Rails Rnavcommand pspec vendor/plugins/chc_hci/spec -glob=**/* -suffix=_spec.rb
 autocmd User Rails Rnavcommand plib vendor/plugins/chc_hci/lib -suffix=.rb
 
+imap dt5 <!DOCTYPE html>
+
 function! Rlocalize(lk) range
   let saved_reg_type = getregtype('"')
   let old_reg = getreg('"')
@@ -47,3 +49,4 @@ endfunction
 command! -nargs=* -range Translate call Rlocalize(<f-args>)
 command! TP normal o<space><esc>x"lp
 noremap ,s :source ~/.vimrc.local
+inoremap <C-X>c #<C-R>=system('colorpick')<CR>
