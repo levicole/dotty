@@ -1,1 +1,2 @@
 --type-add=ruby=.haml,.rake,.feature,.sass,.scss
+--type-add=html=.mustache
