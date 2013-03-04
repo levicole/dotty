@@ -1,0 +1,4 @@
+# stupid file name i know, but other *nix utilities use this
+
+.DS_Store
+*.un~

@@ -4,6 +4,7 @@ ln -s ~/my/dotfiles/.vimrc ~/.vimrc
 ln -s ~/my/dotfiles/.ackrc ~/.ackrc
 ln -s ~/my/dotfiles/.irbrc ~/.irbrc
 ln -s ~/my/dotfiles/.screenrc ~/.screenrc
+ln -s ~/my/dotfiles/.cvsignore ~/.cvsignore
 
 pushd .
 cd ~/my/dotfiles/.vim/bundles
