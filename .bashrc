@@ -71,11 +71,14 @@ export PS1=$MEDIUM_PS1
 
 [ ! -f "/etc/bash_completion" ]  || . "/etc/bash_completion"
 
-[ ! -f "$HOME/.aliases" ]  || . "$HOME/.aliases"
-
 [ ! -f "$HOME/.bashrc.local" ] || . "$HOME/.bashrc.local"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+
+alias gpr='git pull --rebase'
+alias gst='git status'
 
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion

@@ -1,7 +1,4 @@
-runtime! autoload/pathogen.vim
-if exists('g:loaded_pathogen')
-  call pathogen#runtime_prepend_subdirectories(expand('~/.vimbundles'))
-endif
+execute pathogen#infect()
 
 syntax on
 filetype plugin indent on
