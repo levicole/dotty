@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/levicole/dotty/.vim/bundle/nerdcommenter'
-let g:netrw_dirhist_2='/Users/levicole/dotty/.vim/bundle'
-let g:netrw_dirhist_3='/Users/levicole/dotty'
-let g:netrw_dirhist_4='/Users/levicole/dotty/.vim'
-let g:netrw_dirhist_5='/Users/levicole/dotty'
-let g:netrw_dirhist_6='/Users/levicole/dotty/bin'
-let g:netrw_dirhist_7='/Users/levicole/bundle/vim-colors-solarized'
