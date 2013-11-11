@@ -71,17 +71,36 @@ export PS1=$MEDIUM_PS1
 
 [ ! -f "/etc/bash_completion" ]  || . "/etc/bash_completion"
 
-[ ! -f "$HOME/.bashrc.local" ] || . "$HOME/.bashrc.local"
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[ ! -f "$HOME/.bashrc.local" ] || . "$HOME/.bashrc.local"
 
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
 
 alias gpr='git pull --rebase'
+alias gd='git diff'
+alias gdc='git diff --cached'
 alias gst='git status'
+alias lc='lev.io-client'
+
+
+function serveup {
+  ruby -run -e  httpd -- -p 5000 $(pwd)
+}
 
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
-PATH="/usr/local/share/python:/usr/local/bin:$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export GOPATH="$HOME/my/go"
+
+PATH="/usr/local/share/python:/usr/local/bin:$PATH:$HOME/.rvm/bin:$HOME/my/go/bin:/opt/boxen/homebrew/share/npm/bin" # Add RVM to PATH for scripting
+
+[[ -s "$HOME/.levio" ]] && source "$HOME/.levio"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+export PATH=$PATH:$HOME/my/android/adt-bundle-mac-x86_64/sdk/tools
+export PATH=$PATH:$HOME/my/android/adt-bundle-mac-x86_64/sdk/platform-tools
+export ANDROID_HOME=~/my/android/adt-bundle-mac-x86_64/sdk
