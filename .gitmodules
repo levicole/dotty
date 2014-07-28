@@ -112,3 +112,9 @@
 [submodule ".vim/bundle/jshint.vim"]
 	path = .vim/bundle/jshint.vim
 	url = git@github.com:wookiehangover/jshint.vim.git
+[submodule ".vim/bundle/evervim"]
+	path = .vim/bundle/evervim
+	url = git@github.com:kakkyz81/evervim.git
+[submodule ".vim/bundle/vim-slurper"]
+	path = .vim/bundle/vim-slurper
+	url = git@github.com:adamlowe/vim-slurper.git

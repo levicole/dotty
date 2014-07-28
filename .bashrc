@@ -63,8 +63,9 @@ function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/<\1$(parse_git_dirty)>/"
 }
 
+
 LONG_PS1="\033[1;35m\]\W\e[0;33m\](\$(rvm-prompt))\033[0;34m\]\$(parse_git_branch)\[\033[00m\] $ "
-MEDIUM_PS1="\033[1;35m\]\W\033[0;34m\]\$(parse_git_branch)\[\033[00m\] $ "
+MEDIUM_PS1='\[\033[1;35m\]\W\[\033[0;34m\]$(parse_git_branch)\[\033[00m\] $ '
 SHORT_PS1="$(parse_git_dirty) $ "
 
 export PS1=$MEDIUM_PS1
