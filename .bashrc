@@ -82,7 +82,8 @@ alias gd='git diff'
 alias gdc='git diff --cached'
 alias gst='git status'
 alias lc='lev.io-client'
-
+alias td='todo.sh'
+alias geeknote='python $HOME/my/geeknote/geeknote.py'
 
 function serveup {
   ruby -run -e  httpd -- -p 5000 $(pwd)
@@ -93,6 +94,10 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
 fi
 
 export GOPATH="$HOME/my/go"
+
+if [ -f $HOME/.joyent-config ]; then
+  . $HOME/.joyent-config
+fi
 
 PATH="/usr/local/share/python:/usr/local/bin:$PATH:$HOME/.rvm/bin:$HOME/my/go/bin:/opt/boxen/homebrew/share/npm/bin" # Add RVM to PATH for scripting
 
