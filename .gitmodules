@@ -109,12 +109,33 @@
 [submodule ".vim/bundle/vim-golang"]
 	path = .vim/bundle/vim-golang
 	url = https://github.com/jnwhiteh/vim-golang.git
-[submodule ".vim/bundle/jshint.vim"]
-	path = .vim/bundle/jshint.vim
-	url = git@github.com:wookiehangover/jshint.vim.git
 [submodule ".vim/bundle/evervim"]
 	path = .vim/bundle/evervim
 	url = git@github.com:kakkyz81/evervim.git
 [submodule ".vim/bundle/vim-slurper"]
 	path = .vim/bundle/vim-slurper
 	url = git@github.com:adamlowe/vim-slurper.git
+[submodule ".vim/bundle/vim-projectionist"]
+	path = .vim/bundle/vim-projectionist
+	url = git@github.com:tpope/vim-projectionist.git
+[submodule ".vim/bundle/vim-mustache-handlebars"]
+	path = .vim/bundle/vim-mustache-handlebars
+	url = git@github.com:mustache/vim-mustache-handlebars.git
+[submodule ".vim/bundle/vim-csound"]
+	path = .vim/bundle/vim-csound
+	url = git@github.com:kunstmusik/csound-vim.git
+[submodule ".vim/bundle/rust.vim"]
+	path = .vim/bundle/rust.vim
+	url = git@github.com:wting/rust.vim.git
+[submodule ".vim/bundle/vim-racer"]
+	path = .vim/bundle/vim-racer
+	url = git@github.com:racer-rust/vim-racer.git
+[submodule ".vim/bundle/swift.vim"]
+	path = .vim/bundle/swift.vim
+	url = git@github.com:keith/swift.vim.git
+[submodule ".vim/bundle/vim-jsx"]
+	path = .vim/bundle/vim-jsx
+	url = git@github.com:mxw/vim-jsx.git
+[submodule ".vim/bundle/elm.vim"]
+	path = .vim/bundle/elm.vim
+	url = git@github.com:lambdatoast/elm.vim.git

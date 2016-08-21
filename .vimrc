@@ -10,6 +10,10 @@ augroup END
 
 autocmd BufRead,BufNewFile *.hamlc setlocal filetype=haml
 autocmd FileType go setlocal shiftwidth=4 tabstop=4 expandtab
+autocmd FileType handlebars setlocal shiftwidth=2 tabstop=2 expandtab
+
+let g:mustache_abbreviations = 1
+
 colorscheme solarized
 
 let NERDTreeHijackNetrw=0
@@ -34,4 +38,8 @@ let g:unite_enable_start_insert = 1
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 nnoremap <C-p> :Unite file_rec/async<cr>
-nnoremap <C-o> :Unite outline -vertical <cr>
+
+let g:racer_cmd = "/Users/levicole/.cargo/bin/racer"
+let $RUST_SRC_PATH="/Users/levicole/rust-src/src"
+
+let g:jsx_extension_required = 0

@@ -1,35 +1,6 @@
 " hashrocket.vim
 " vim:set ft=vim et tw=78 sw=2:
 
-if $HASHROCKET_DIR == '' && expand('<sfile>') =~# '/dotmatrix/\.vim/plugin/hashrocket\.vim$'
-  let $HASHROCKET_DIR = expand('<sfile>')[0 : -20]
-endif
-if $HASHROCKET_DIR == '' && filereadable(expand('~/.bashrc'))
-  let $HASHROCKET_DIR = expand(matchstr("\n".join(readfile(expand('~/.bashrc')),"\n")."\n",'\n\%(export\)\=\s*HASHROCKET_DIR="\=\zs.\{-\}\ze"\=\n'))
-endif
-if $HASHROCKET_DIR == ''
-  let $HASHROCKET_DIR = substitute(system("bash -i -c 'echo \"$HASHROCKET_DIR\"'"),'\n$','','')
-endif
-if $HASHROCKET_DIR == ''
-  let $HASHROCKET_DIR = expand('~/hashrocket')
-endif
-
-function! s:HComplete(A,L,P)
-  let match = split(glob($HASHROCKET_DIR.'/'.a:A.'*'),"\n")
-  return map(match,'v:val[strlen($HASHROCKET_DIR)+1 : -1]')
-endfunction
-command! -bar -nargs=1 Hcommand :command! -bar -bang -nargs=1 -complete=customlist,s:HComplete H<args> :<args><lt>bang> $HASHROCKET_DIR/<lt>args>
-
-Hcommand cd
-Hcommand lcd
-Hcommand read
-Hcommand edit
-Hcommand split
-Hcommand saveas
-Hcommand tabedit
-
-command! -bar -nargs=* -complete=dir Terrarails :execute 'Rails --template='.system("ruby -rubygems -e 'print Gem.bin_path(%(terraformation))'") . ' ' . <q-args>
-
 command! -bar -range=% Trim :<line1>,<line2>s/\s\+$//e
 
 function! HTry(function, ...)
@@ -85,9 +56,6 @@ let g:surround_indent = 1
 
 command! -bar -nargs=0 SudoW   :setl nomod|silent exe 'write !sudo tee % >/dev/null'|let &mod = v:shell_error
 command! -bar -nargs=* -bang W :write<bang> <args>
-
-runtime! plugin/matchit.vim
-runtime! macros/matchit.vim
 
 map Y       y$
 nnoremap <silent> <C-L> :nohls<CR><C-L>
