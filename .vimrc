@@ -11,10 +11,11 @@ augroup END
 autocmd BufRead,BufNewFile *.hamlc setlocal filetype=haml
 autocmd FileType go setlocal shiftwidth=4 tabstop=4 expandtab
 autocmd FileType handlebars setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType asm setlocal shiftwidth=8 tabstop=8 expandtab
 
 let g:mustache_abbreviations = 1
 
-colorscheme solarized
+colorscheme afterglow
 
 let NERDTreeHijackNetrw=0
 
@@ -22,6 +23,10 @@ let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
 
 set number
+
+set tags=./vtags,vtags,./tags,tags
+
+let g:rails_ctags_arguments=["-o ctags"]
 
 autocmd User Rails Rnavcommand sass app/stylesheets -glob=**/* -suffix=.sass
 autocmd User Rails Rnavcommand feature features -suffix=.feature
@@ -43,3 +48,36 @@ let g:racer_cmd = "/Users/levicole/.cargo/bin/racer"
 let $RUST_SRC_PATH="/Users/levicole/rust-src/src"
 
 let g:jsx_extension_required = 0
+
+let g:projectionist_heuristics = {
+      \ "mix.exs": {
+      \     "lib/*.ex": {
+      \       "type": "lib",
+      \       "alternate": "test/{}_test.exs",
+      \       "template": [
+      \         "defmodule {camelcase|dot} do",
+      \         "  @moduledoc \"\"\"",
+      \         "  \"\"\"",
+      \         "end"
+      \       ]
+      \     },
+      \     "test/*_test.exs": {
+      \       "type": "test",
+      \       "alternate": "lib/{}.ex",
+      \       "template": [
+      \         "defmodule {camelcase|dot}Test do",
+      \         "  use ExUnit.Case",
+      \         "end"
+      \       ]
+      \     },
+      \     "*": {
+      \       "make": "mix"
+      \     }
+      \   }
+      \ }
+if &term =~ '256color'
+  " disable Background Color Erase (BCE) so that color schemes
+  " render properly when inside 256-color tmux and GNU screen.
+  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+  set t_ut=
+endif
