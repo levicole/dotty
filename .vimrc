@@ -3,6 +3,8 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
+let mapleader="\<Space>"
+
 augroup vimrc
   autocmd!
   autocmd GuiEnter * set guifont=Monaco:h16 guioptions-=T columns=120 lines=70 number
@@ -33,6 +35,9 @@ autocmd User Rails Rnavcommand feature features -suffix=.feature
 autocmd User Rails Rnavcommand factory spec/factories -default=model() -suffix=_factory.rb
 autocmd User Rails Rnavcommand admin app/admin -suffix=_admin.rb -default=model()
 autocmd User Rails Rnavcommand worker app/workers -suffix=_worker.rb -default=model()
+
+map <leader>] :bnext<CR>
+map <leader>[ :bprevious<CR>
 
 imap dt5 <!DOCTYPE html>
 
