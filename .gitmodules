@@ -148,6 +148,3 @@
 [submodule ".vim/bundle/vim-afterglow"]
 	path = .vim/bundle/vim-afterglow
 	url = git@github.com:danilo-augusto/vim-afterglow.git
-[submodule ".vim/bundle/YouCompleteMe"]
-	path = .vim/bundle/YouCompleteMe
-	url = git@github.com:Valloric/YouCompleteMe.git

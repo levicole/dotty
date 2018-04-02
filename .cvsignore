@@ -3,3 +3,11 @@
 .DS_Store
 *.un~
 tags
+TAGS
+vtags
+*.#*
+*.swp
+*.swo
+.projectile
+TODOs.org
+scratch.sql
