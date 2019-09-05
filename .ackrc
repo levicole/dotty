@@ -1,2 +1,4 @@
 --type-add=ruby=.haml,.rake,.feature,.sass,.scss
 --type-add=html=.mustache
+--ignore-dir=node_modules
+--ignore-dir=log

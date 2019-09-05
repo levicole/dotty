@@ -40,7 +40,7 @@ LESS="FRX"
 RI="--format ansi -T"
 TERM="xterm-256color"
 
-export VISUAL EDITOR LESS RI
+export VISUAL EDITOR LESS RI TERM
 
 export CLICOLOR=1
 export LSCOLORS=gxgxcxdxbxegedabagacad
@@ -95,14 +95,11 @@ fi
 
 export GOPATH="$HOME/my/go"
 
-if [ -f $HOME/.joyent-config ]; then
-  . $HOME/.joyent-config
-fi
-
-PATH="/usr/local/share/python:/usr/local/bin:$PATH:$HOME/.rvm/bin:$HOME/my/go/bin:/opt/boxen/homebrew/share/npm/bin" # Add RVM to PATH for scripting
+PATH="/usr/local/share/python:/usr/local/bin:$PATH:$HOME/.rvm/bin:$HOME/my/go/bin" # Add RVM to PATH for scripting
 
 [[ -s "$HOME/.levio" ]] && source "$HOME/.levio"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -110,3 +107,11 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH=$PATH:$HOME/my/android/adt-bundle-mac-x86_64/sdk/tools
 export PATH=$PATH:$HOME/my/android/adt-bundle-mac-x86_64/sdk/platform-tools
 export ANDROID_HOME=~/my/android/adt-bundle-mac-x86_64/sdk
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+complete -C /usr/local/bin/terraform terraform
